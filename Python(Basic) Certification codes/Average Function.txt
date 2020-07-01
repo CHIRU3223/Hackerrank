@@ -1,0 +1,14 @@
+def avg(*n):
+    sum=0.0
+    for i in n:
+        sum+=i
+    return sum/len(n)
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    
+    nums = map(int, raw_input().split())
+    res = avg(*nums)
+    
+    fptr.write('%.2f' % res + '\n')
+
+    fptr.close()

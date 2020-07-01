@@ -1,0 +1,64 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    // Complete the isValid function below.
+    static String isValid(String s) {
+        int m=0,n=0,size=0;
+        int[] f=new int[26];
+        for(int i=0;i<s.length();i++)
+            f[s.charAt(i)-'a']++;
+        int max=f[0];
+        int min=Integer.MAX_VALUE;
+        for(int i=0;i<26;i++)
+            if(f[i]>0)
+                size++;
+        for(int i=0;i<26;i++)
+            if(f[i]>max)
+                max=f[i];
+            else if(f[i]<min  && f[i]>0)
+                min=f[i];
+        for(int i=0;i<26;i++){
+            if(max==f[i])
+                m++;
+            else if(min==f[i])
+                n++;
+        }
+        if(s.length()==1)
+            return "YES";
+        if(max==min)
+            return "YES";
+        if(max-min==1)
+            if(m==size-1 && n==1)
+                return "YES"; 
+            else if(n==size-1 && m==1)
+                return "YES"; 
+        if(m+n==size)
+            if(m==size-1 && n==1 && min==1)
+                return "YES";
+        return "NO";
+    }
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) throws IOException {
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        String s = scanner.nextLine();
+
+        String result = isValid(s);
+
+        bufferedWriter.write(result);
+        bufferedWriter.newLine();
+
+        bufferedWriter.close();
+
+        scanner.close();
+    }
+}

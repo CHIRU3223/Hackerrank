@@ -1,0 +1,15 @@
+def reverse_words_order_and_swap_cases(sentence):
+    # Write your code here
+    a=" ".join(reversed(sentence.split()))
+    return a.swapcase()
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    sentence = raw_input()
+
+    result = reverse_words_order_and_swap_cases(sentence)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
