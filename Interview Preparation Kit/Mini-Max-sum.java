@@ -10,7 +10,7 @@ public class Solution {
 
     // Complete the miniMaxSum function below.
     static void miniMaxSum(int[] arr) {
-        int min=0,max=0;
+        long min=0,max=0;
         Arrays.sort(arr);
         for(int i=0;i<4;i++){
             min+=arr[i];
