@@ -11,9 +11,11 @@ public class Solution {
     // Complete the kangaroo function below.
     static String kangaroo(int x1, int v1, int x2, int v2) {
         int i=0;
-        while(i<=10000)
-            if((x1+i*v1)==(x2+(i++)*v2))
+        while(i<=10000){
+            if((x1+i*v1)==(x2+i*v2))
                 return "YES";
+            i++;
+        }
         return "NO";
 
     }
